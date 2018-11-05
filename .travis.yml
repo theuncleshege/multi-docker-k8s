@@ -1,0 +1,23 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t theuncleshege/multi-docker-client -f ./client/Dockerfile.dev ./client
+  # - docker build -t theuncleshege/multi-docker-api -f ./api/Dockerfile.dev ./api
+  # - docker build -t theuncleshege/multi-docker-worker -f ./worker/Dockerfile.dev ./worker
+
+script:
+  - docker run theuncleshege/multi-docker-client npm run test -- --coverage
+
+after_success:
+  - docker build -t theuncleshege/multi-docker-client ./client
+  - docker build -t theuncleshege/multi-docker-api ./api
+  - docker build -t theuncleshege/multi-docker-worker ./worker
+  - docker build -t theuncleshege/multi-docker-nginx ./nginx
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push theuncleshege/multi-docker-client
+  - docker push theuncleshege/multi-docker-api
+  - docker push theuncleshege/multi-docker-worker
+  - docker push theuncleshege/multi-docker-nginx
