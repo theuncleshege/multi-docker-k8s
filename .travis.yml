@@ -21,3 +21,16 @@ after_success:
   - docker push theuncleshege/multi-docker-api
   - docker push theuncleshege/multi-docker-worker
   - docker push theuncleshege/multi-docker-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "multi-docker"
+  env: "MultiDocker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-596870276118"
+  bucket_path: "multi-docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
