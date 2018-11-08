@@ -4,8 +4,6 @@ services:
 
 before_install:
   - docker build -t theuncleshege/multi-docker-client -f ./client/Dockerfile.dev ./client
-  # - docker build -t theuncleshege/multi-docker-api -f ./api/Dockerfile.dev ./api
-  # - docker build -t theuncleshege/multi-docker-worker -f ./worker/Dockerfile.dev ./worker
 
 script:
   - docker run theuncleshege/multi-docker-client npm run test -- --coverage
