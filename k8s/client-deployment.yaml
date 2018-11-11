@@ -17,4 +17,3 @@ spec:
           image: theuncleshege/multi-docker-client
           ports:
             - containerPort: 3000
-# kubectl set image deployment/client-deployment client=theuncleshege/multi-docker-client
