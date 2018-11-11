@@ -1,14 +1,14 @@
-# docker build -t theuncleshege/multi-docker-client -t theuncleshege/multi-docker-client:$SHA ./client
-# docker build -t theuncleshege/multi-docker-api -t theuncleshege/multi-docker-api:$SHA ./api
-# docker build -t theuncleshege/multi-docker-worker -t theuncleshege/multi-docker-worker:$SHA ./worker
+docker build -t theuncleshege/multi-docker-client -t theuncleshege/multi-docker-client:$SHA ./client
+docker build -t theuncleshege/multi-docker-api -t theuncleshege/multi-docker-api:$SHA ./api
+docker build -t theuncleshege/multi-docker-worker -t theuncleshege/multi-docker-worker:$SHA ./worker
 
-# docker push theuncleshege/multi-docker-client
-# docker push theuncleshege/multi-docker-api
-# docker push theuncleshege/multi-docker-worker
+docker push theuncleshege/multi-docker-client
+docker push theuncleshege/multi-docker-api
+docker push theuncleshege/multi-docker-worker
 
-# docker push theuncleshege/multi-docker-client:$SHA
-# docker push theuncleshege/multi-docker-api:$SHA
-# docker push theuncleshege/multi-docker-worker:$SHA
+docker push theuncleshege/multi-docker-client:$SHA
+docker push theuncleshege/multi-docker-api:$SHA
+docker push theuncleshege/multi-docker-worker:$SHA
 
 kubectl apply -f k8s
 
