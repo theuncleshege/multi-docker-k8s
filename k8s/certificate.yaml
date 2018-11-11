@@ -1,0 +1,20 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: multi-docker-k8s-tk-tls
+spec:
+  secretName: multi-docker-k8s-tk
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: multi-docker-k8s.tk
+  dnsNames:
+    - multi-docker-k8s.tk
+    - www.multi-docker-k8s.tk
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - multi-docker-k8s.tk
+          - www.multi-docker-k8s.tk
