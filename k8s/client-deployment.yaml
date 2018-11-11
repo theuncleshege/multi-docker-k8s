@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: client
+          image: theuncleshege/multi-docker-client
+          ports:
+            - containerPort: 3000
+# kubectl set image deployment/client-deployment client=theuncleshege/multi-docker-client
