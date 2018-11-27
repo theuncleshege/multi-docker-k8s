@@ -28,10 +28,21 @@ class Fib extends Component {
   handleSubmit = async event => {
     event.preventDefault();
 
+    let seenIndexesArray = this.state.seenIndexes.map(({
+      number
+    }) => number);
+
+    if (seenIndexesArray.indexOf(parseInt(this.state.index, 10)) !== -1) {
+      alert('Index exists already. Please use another index');
+      return;
+    }
+
     await axios.post('/api/values', {
       index: this.state.index
     });
     this.setState({ index: '' });
+    this.fetchValues();
+    this.fetchIndexes();
   };
 
   renderSeenIndexes() {
@@ -57,12 +68,12 @@ class Fib extends Component {
       <div>
         <h3>Fibonacci Sequence</h3>
         <form onSubmit={this.handleSubmit}>
-          <label>Enter your index:</label>
+          <label>Enter your index:&nbsp;</label>
           <input
             value={this.state.index}
             onChange={event => this.setState({ index: event.target.value })}
           />
-          <button>Submit</button>
+          &nbsp;<button>Submit</button>
         </form>
 
         <h3>Indexes I have seen:</h3>
