@@ -45,8 +45,15 @@ class Fib extends Component {
     this.fetchIndexes();
   };
 
+  unique = (value, index, self) => {
+    return self.indexOf(value) === index;
+  }
+
   renderSeenIndexes() {
-    return this.state.seenIndexes.map(({ number }) => number).join(', ');
+    const uniqueIndexes = this.state.seenIndexes.map(({
+      number
+    }) => number).filter(this.unique);
+    return uniqueIndexes.sort().join(', ');
   }
 
   renderValues() {
