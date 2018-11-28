@@ -3,7 +3,7 @@
 
 A multiple docker-containerized project hosted on <b>Google Kubernetes Engine</b>.
 
-It is a simple Fibonacci calculator but intentionally developed in a complex way to demonstrate how to structure and deploy a CI/CD pipeline with multiple docker containers on GKE.
+It is a simple Fibonacci calculator but intentionally developed in a complex way to demonstrate how to structure and deploy a CI/CD pipeline with multiple docker containers on GCP.
 
 ### [Demo](https://multi-docker-k8s.tk)
 
