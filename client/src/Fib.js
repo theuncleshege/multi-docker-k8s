@@ -53,7 +53,7 @@ class Fib extends Component {
     const uniqueIndexes = this.state.seenIndexes.map(({
       number
     }) => number).filter(this.unique);
-    return uniqueIndexes.sort().join(', ');
+    return uniqueIndexes.join(', ');
   }
 
   renderValues() {
